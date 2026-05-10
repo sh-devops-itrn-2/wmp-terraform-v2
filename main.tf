@@ -1,5 +1,5 @@
 resource "aws_instance" "instance" {
-  count         = var.components
+  count         = 5
   ami           = "ami-0220d79f3f480ecf5"
   instance_type = "t3.micro"
   vpc_security_group_ids = ["sg-03f7da9ebe210e12a"]
@@ -9,7 +9,7 @@ resource "aws_instance" "instance" {
 }
 
 resource "aws_route53_record" "dns" {
-  count  =  var.components
+  count  =  5
   zone_id = "Z03351562OJATKDWYEO40"
   name    = "${var.components[count.index]}-dev"
   type    = "A"
